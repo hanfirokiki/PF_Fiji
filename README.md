@@ -33,5 +33,6 @@
 
 ## 使用素材
 - トーホートラベル（許可済み）https://www.tohotravel.com/
-- 
+- アクアトレックマナ（許可済み）https://www.aquatrekdiving.com/
+-
 -
