@@ -5,12 +5,29 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/c55389cdf8.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+    <% if request.fullpath.include? "/admin" %>
+      <%= render 'layouts/admin-header' %>
+    <% else %>
+      <%= render 'layouts/user-header' %>
+    <% end %>
+    <main>
+  </header>
     <%= yield %>
+    <footer>
+      <div class="container mt-5">
+        <div class="row">
+          <div class="mx-auto">
+            <p>© 2023 hanfirokiki</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
