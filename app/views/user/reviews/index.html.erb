@@ -1,2 +1,16 @@
-<h1>レビューの一覧画面</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="container-fluid">
+  <div class="row justify-content-center mt-3">
+    <h1 class="border-bottom border-gray">レビュー一覧画面</h1>
+  </div>
+
+
+  <% @reviews.each do |review| %>
+<div>
+  <%#= image_tag review.get_images %>
+  <p>投稿画像：<%= image_tag review.get_images %></p>
+  <p>カテゴリー：<%= review.category_name %></p>
+  <p>タイトル：<%= review.title %></p>
+  <p>感想：<%= review.introduction %></p>
+  <p>ニックネーム：<%= review.user.nickname %></p>
+</div>
+<% end %>

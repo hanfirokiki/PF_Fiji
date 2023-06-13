@@ -1,2 +1,43 @@
-<h1>ユーザーのマイページ</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="container-fluid">
+  <div class="row justify-content-center mt-3">
+    <h1 class="border-bottom border-gray">マイページ</h1>
+  </div>
+
+
+ <strong>登録情報</strong>
+      <%= link_to '編集する', edit_user_path, class: "btn btn-outline-success btn-sm" %>
+
+      <!--ユーザーの詳細#-->
+      <div>
+        <h3><%= image_tag @user.get_profile_image(100,100) %></h3>
+ 　    </div>
+
+
+      <table class='table table-bordered mt-2'>
+        <tr>
+          <td class="table-secondary col-md-2">ニックネーム：</td>
+          <td>
+            <%= current_user.nickname %>
+          </td>
+        <tr>
+          <td class="table-secondary">メールアドレス：</td>
+          <td><%= current_user.email %></td>
+        </tr>
+      </table>
+
+<!-- ユーザーの投稿一覧 -->
+
+    <% @reviews.each do |review| %>
+<div>
+  <%#= link_to review_path(review.id) do %>
+    <%#= image_tag review.get_images %>
+  <%# end %>
+  <p>投稿画像：<%= image_tag review.user.get_profile_image(100,100) %></p>
+  <p>タイトル：<%= review.title %></p>
+  <p>説明：<%= review.introduction %></p>
+</div>
+<% end %>
+
+ </div>
+  </div>
+</div>

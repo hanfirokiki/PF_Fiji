@@ -22,10 +22,10 @@ namespace :admin do
     #root 'homes#top'
     #get 'homes/about' => 'homes#about'
     resources :users, only: [:edit, :update]
-    get '/users/mypage' => 'users#show'
+    get '/users/mypage/:id' => 'users#show', as: "mypage"
     get 'users/withdraw_confirm' => 'users#withdraw_confirm', as: 'withdraw_confirm'
     patch 'users/withdraw' => 'users#withdraw', as: 'withdraw'
-    resources :reviews, only: [:new, :index, :edit, :create, :update, :destroy, :show]
+    resources :reviews
     resources :comments, only: [:cerate, :destroy] do
      collection do
         delete 'destroy_all'

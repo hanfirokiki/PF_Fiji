@@ -1,2 +1,24 @@
-<h1>アドミン側カテゴリーの編集画面</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="container-fluid">
+  <div class="row justify-content-center mt-3">
+    <h1 class="border-bottom border-gray">カテゴリー編集画面</h1>
+  </div>
+
+
+  <div class="container p-5">
+<%= render 'admin/shared/error_messages', resource: @category %>
+  <div class="row">
+    <div class="col-6 mx-auto pb-4">
+      <h3>カテゴリー編集</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <%= form_with model: @category, url: admin_category_path(@category),method: :patch do |f| %>
+        <td><%= f.label :"カテゴリー名", class: "mr-3" %></td>
+        <td><%= f.text_field :category_name, class: "mr-5" %></td>
+        <td><%= f.submit "変更を保存", class: "btn btn-primary" %></td>
+      <% end %>
+    </div>
+  </div>
+</div>
+

@@ -18,6 +18,12 @@ class User::SessionsController < Devise::SessionsController
   #   super
   # end
 
+
+  def after_sign_in_path_for(resource)
+    mypage_path(resource)
+  end
+
+
   protected
     def user_state
     ## 【処理内容1】 入力されたemailからアカウントを1件取得
@@ -34,3 +40,8 @@ class User::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 end
+
+#def after_sign_in_path_for(resource)
+ # mypage_path(current_user)
+  # super(resource)
+#end

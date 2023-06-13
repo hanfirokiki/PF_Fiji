@@ -1,3 +1,46 @@
-
-<h1>アドミン側　ユーザーの詳細画面</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="container-fluid">
+  <div class="row justify-content-center mt-3">
+    <h1 class="border-bottom border-gray">管理者側　ユーザーの詳細</h1>
+  </div>
+  
+  
+  <div class="row offset-md-1">
+    <div class="col-8 mx-auto pb-4">
+      <h1><%= @user.nickname %><%= @user.nickname %>さんの会員詳細</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 mx-auto">
+      <table class="table">
+        <tr>
+          <th>会員ID</th>
+          <td><%= @user.id %></td>
+        </tr>
+        <tr>
+          <th>ニックネーム</th>
+          <td><%= @user.nickname %><%= @user.nickname %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <th>会員ステータス</th>
+          <td><% if @user.is_deleted %>
+            退会
+            <% else %>
+            有効
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-10 d-grid gap-2 d-md-flex justify-content-md-end">
+      <div>
+        <%= link_to '編集する', edit_admin_end_user_path(@end_user), class:"btn btn-sm btn-success mr-2" %>
+      </div>
+      
+    </div>
+  </div>
+</div>
+  

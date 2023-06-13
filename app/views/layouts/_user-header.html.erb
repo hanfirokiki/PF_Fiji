@@ -13,7 +13,7 @@
         <% if user_signed_in? %>
           <li><strong>〜〜ようこそ、<%= current_user.nickname %>さん〜〜</strong><%#= render "searches/search" %></li>
           <li>
-            <%= link_to 'マイページ', users_mypage_path, class:'nav-link text-light btn btn-dark ml-5' %>
+            <%= link_to 'マイページ', mypage_path(current_user), class:'nav-link text-light btn btn-dark ml-5' %>
           </li>
           <li>
             <%= link_to 'レビュー一覧', reviews_path, class:'nav-link text-light btn btn-dark ml-2' %>
