@@ -2,15 +2,24 @@
   <div class="row justify-content-center mt-3">
     <h1 class="border-bottom border-gray">レビュー一覧画面</h1>
   </div>
-
-
-  <% @reviews.each do |review| %>
-<div>
-  <%#= image_tag review.get_images %>
-  <p>投稿画像：<%= image_tag review.get_images %></p>
-  <p>カテゴリー：<%= review.category_name %></p>
-  <p>タイトル：<%= review.title %></p>
-  <p>感想：<%= review.introduction %></p>
-  <p>ニックネーム：<%= review.user.nickname %></p>
+  
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col text-center mt-5">
+        <% @reviews.each do |review| %>
+      <div>
+        <p>ニックネーム：<%= review.user.nickname %></p>
+        <p>タイトル：<%= review.title %></p>
+        <p>カテゴリー：<%= review.category.category_name %></p>
+        <p class="test1">感想：<%= review.introduction %></p>
+        
+          <% review.get_images.each do |image|%>
+            <p>投稿画像：<%= image_tag image, class: "big_test1" %></p>
+          <% end %>
+      </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
-<% end %>
+

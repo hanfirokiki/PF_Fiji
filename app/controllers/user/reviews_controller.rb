@@ -6,6 +6,7 @@ class User::ReviewsController < ApplicationController
 
   def index
     @reviews = Review.all
+   # @images = Review_images.all
   end
 
   def edit

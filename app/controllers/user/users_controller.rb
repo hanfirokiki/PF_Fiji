@@ -15,7 +15,7 @@ class User::UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      redirect_to users_mypage_path
+      redirect_to mypage_path
     else
       render 'edit'
     end
@@ -23,12 +23,15 @@ class User::UsersController < ApplicationController
   end
 
   def withdraw_confirm
+    #@user = User.find(params[:id])
+    @user = current_user
   end
 
   def withdraw
     @user = current_user
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる
     @user.update(is_deleted: true)
+    sign_out(@user)
     reset_session
     flash[:alert] = "退会処理を実行いたしました"
     redirect_to root_path
@@ -37,6 +40,6 @@ class User::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:nickname, :email, :tile, :introduction, :plofile_image, :review, :images)
+    params.require(:user).permit(:nickname, :email, :tile, :introduction, :plofile_image, :reviews, :images, :is_deleted)
   end
 end
