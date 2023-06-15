@@ -11,4 +11,10 @@ class Review < ApplicationRecord
     end
     images
    end
+
+   validates :nickname, presence: true
+   validates :title, presence: true
+   validates :introduction, presence: true
+   validates :review_images, presence: true
+
 end

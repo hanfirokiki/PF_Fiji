@@ -2,7 +2,7 @@ class Admin::CategoriesController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @category = category.new
+    @category = Category.new
     @categories = Category.all
   end
 
@@ -23,8 +23,8 @@ class Admin::CategoriesController < ApplicationController
     else
     render 'edit'
     end
-    
-    
+
+
   end
 
   private

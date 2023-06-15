@@ -13,15 +13,15 @@ Rails.application.routes.draw do
 namespace :admin do
     get 'homes/top' => 'homes#top'
     resources :users, only: [:index, :show, :edit, :update]
-    resources :categories, only: [:index, :show, :edit, :create, :update]
     resources :reviews, only: [:index, :show, :destroy]
+    resources :categories, only: [:index, :show, :edit, :create, :update]
     resources :comments, only: [:destroy]
   end
 
   scope module: :user do
     get 'users/withdraw_confirm' => 'users#withdraw_confirm', as: 'withdraw_confirm'
     patch 'users/withdraw' => 'users#withdraw', as: 'withdraw'
-    
+
     resources :users, only: [:edit, :update]
     get '/users/mypage/:id' => 'users#show', as: "mypage"
     resources :reviews

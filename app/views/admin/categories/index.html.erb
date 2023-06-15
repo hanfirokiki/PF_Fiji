@@ -2,10 +2,10 @@
   <div class="row justify-content-center mt-3">
     <h1 class="border-bottom border-gray">カテゴリー管理・一覧画面</h1>
   </div>
-  
+
     <div class="row p-4">
     <div class="col-4">
-      
+
      <%=form_with model: @category,url: admin_categories_path, method: :post do |f| %>
       <%= f.label :"カテゴリー名", class: "mr-5" %>
       <%= f.text_field :category_name, class: "mr-5" %>
@@ -20,7 +20,7 @@
           <tr><th>カテゴリー</th></tr>
         </thead>
         <tbody>
-         <% @category.each do |category| %>
+         <% @categories.each do |category| %>
           <tr>
             <td>
               <%= category.category_name %>
@@ -36,4 +36,3 @@
   </div>
 </div>
 
-  
