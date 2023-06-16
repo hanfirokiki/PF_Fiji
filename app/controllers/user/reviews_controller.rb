@@ -45,6 +45,6 @@ class User::ReviewsController < ApplicationController
    private
 
   def review_params
-    params.require(:review).permit(:title, :introduction, :category_id, images: [])
+    params.require(:review).permit(:title, :introduction, :nickname, :category_id, images: [])
   end
 end

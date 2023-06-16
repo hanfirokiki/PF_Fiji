@@ -11,28 +11,28 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
-          <li><strong>〜〜ようこそ、<%= current_user.nickname %>さん〜〜</strong><%#= render "searches/search" %></li>
+          <li><strong>ようこそ、<%= current_user.nickname %>さん</strong><%#= render "searches/search" %></li>
           <li>
-            <%= link_to 'マイページ', mypage_path(current_user), class:'nav-link text-light btn btn-dark ml-5' %>
+            <%= link_to 'マイページ', mypage_path(current_user), class:'nav-link text-light btn btn-info ml-5' %>
           </li>
           <li>
-            <%= link_to 'レビュー一覧', reviews_path, class:'nav-link text-light btn btn-dark ml-2' %>
+            <%= link_to 'レビュー一覧', reviews_path, class:'nav-link text-light btn btn-info ml-2' %>
           </li>
           <li>
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:'nav-link text-light btn btn-dark ml-2' %>
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:'nav-link text-light btn btn-info ml-2' %>
           </li>
         <% else %>
           <li>
-            <%= link_to 'About', homes_about_path, class:'nav-link text-light btn btn-dark ml-2' %>
+            <%= link_to 'About', homes_about_path, class:'nav-link text-light btn btn-info ml-2' %>
           </li>
           <li>
-            <%=  link_to 'レビュー一覧', reviews_path, class:'nav-link text-light btn btn-dark ml-2' %>
+            <%=  link_to 'レビュー一覧', reviews_path, class:'nav-link text-light btn btn-info ml-2' %>
           </li>
           <li>
-            <%=  link_to '新規登録', new_user_registration_path, class:'nav-link text-light btn btn-dark ml-2' %>
+            <%=  link_to '新規登録', new_user_registration_path, class:'nav-link text-light btn btn-info ml-2' %>
           </li>
           <li>
-            <%= link_to 'ログイン', user_session_path, class:'nav-link text-light btn btn-dark ml-2' %>
+            <%= link_to 'ログイン', user_session_path, class:'nav-link text-light btn btn btn-info ml-2' %>
           </li>
         <% end %>
         </ul>

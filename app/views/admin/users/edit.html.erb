@@ -6,7 +6,7 @@
   <%= render 'admin/shared/error_messages', resource: @user %>
 <div class="container p-5">
   <div class="row offset-md-2">
-  <h1><%= @user.nickname %><%= @user.nickname %>さんの会員情報編集</h1>
+  <h1><%= @user.nickname %>さんの会員情報編集</h1>
   </div>
   <div class="row">
     <div class="col-8 offset-md-4">
@@ -36,7 +36,7 @@
           <tr>
           </tr>
       </table>
-    <%= f.submit '変更を保存', class:"text-center btn btn-success" %>
+    <%= f.submit '変更を保存', class:"text-center btn btn-outline-success" %>
   <% end %>
   </div>
 </div>
