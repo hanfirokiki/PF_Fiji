@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root to: 'homes#top'
   get 'homes/about' => 'homes#about'
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -10,12 +11,18 @@ Rails.application.routes.draw do
   sessions: 'user/sessions'
 }
 
-namespace :admin do
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+  end
+
+  namespace :admin do
     get 'homes/top' => 'homes#top'
     resources :users, only: [:index, :show, :edit, :update]
-    resources :reviews, only: [:index, :show, :destroy]
+    resources :reviews, only: [:index, :show, :destroy] do
+      resources :comments, only: [:destroy]
+    end
     resources :categories, only: [:index, :show, :edit, :create, :update]
-    resources :comments, only: [:destroy]
+
   end
 
   scope module: :user do
@@ -24,15 +31,10 @@ namespace :admin do
 
     resources :users, only: [:edit, :update]
     get '/users/mypage/:id' => 'users#show', as: "mypage"
-    resources :reviews
-    resources :comments, only: [:cerate, :destroy] do
-     collection do
-        delete 'destroy_all'
-      end
+    resources :reviews do
+      resource :likes, only: [:create, :destroy]
+      resources :comments, only: [:create, :destroy]
     end
-
-
-
 
     # resources :foods, only: [:show, :edit, :new, :create] do
     #   get 'search' => 'foods#search', as: 'search'

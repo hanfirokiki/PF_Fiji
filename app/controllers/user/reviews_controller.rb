@@ -5,7 +5,7 @@ class User::ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = Review.all
+    @reviews = Review.all.order(created_at: :desc)
    # @images = Review_images.all
   end
 
@@ -15,6 +15,7 @@ class User::ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
+    @comment = Comment.new
   end
 
   def create
@@ -45,6 +46,6 @@ class User::ReviewsController < ApplicationController
    private
 
   def review_params
-    params.require(:review).permit(:title, :introduction, :nickname, :category_id, images: [])
+    params.require(:review).permit(:title, :introduction, :category_id, images: [])
   end
 end

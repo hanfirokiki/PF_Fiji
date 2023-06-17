@@ -1,25 +1,80 @@
-<div class="container-fluid">
-  <div class="row justify-content-center mt-3">
-    <h1 class="border-bottom border-gray">レビュー一覧画面</h1>
-  </div>
-  
-  <div class="container mt-5">
-    <div class="row">
-      <div class="col text-center mt-5">
-        <% @reviews.each do |review| %>
-      <div>
-        <p>ニックネーム：<%= review.user.nickname %></p>
-        <p>タイトル：<%= review.title %></p>
-        <p>カテゴリー：<%= review.category.category_name %></p>
-        <p class="test1">感想：<%= review.introduction %></p>
-        
-          <% review.get_images.each do |image|%>
-            <p>投稿画像：<%= image_tag image, class: "big_test1" %></p>
-          <% end %>
+<div class="container">
+  <h2 class="page-title text-center">レビュー一覧</h2>
+  <h5 class="my-3"><%= "レビュー一覧 （全#{@reviews.count}件）" %></h5>
+
+  <div class="row">
+    <% @reviews.each do |review| %>
+      <div class="col-12 col-md-6 col-lg-4 mb-3">
+        <div class="card">
+          <div class="card-header">
+            <%= image_tag review.user.get_profile_image(100, 100), class: 'profile-circle-image rounded-circle mr-3' %>
+            <%= review.user.nickname %>
+          </div>
+
+          <!-- Slider main container -->
+          <div class="swiper" style="width: 100%; height: 200px;">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+              <!-- Slides -->
+              <% review.get_images.each do |image| %>
+                <div class="swiper-slide">
+                  <%= image_tag image, class: 'review-card-image' %>
+                </div>
+              <% end %>
+            </div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= link_to review.title, review_path(review) %>
+            </h5>
+            <%= review.introduction.truncate(10) %>
+          </div>
+          <div class="card-footer">
+
+            <div class="like_btn">
+              <% if review.liked?(current_user) %>
+                <%= link_to review_likes_path(review), method: :delete, class: "like_btn" do %>
+                  ♥<%= review.likes.count %> いいね
+                <% end %>
+              <% else %>
+                <%= link_to review_likes_path(review), method: :post, class: "like_btn" do %>
+                  ♡<%= review.likes.count %> いいね
+                <% end %>
+              <% end %>
+            </div>
+
+            <div class="category text-right">
+              <small>
+                <%= review.category.category_name %>
+              </small>
+            </div>
+            <div class="datetime text-right">
+              <small class="text-black-50">
+                <%= review.created_at.in_time_zone('Tokyo').strftime('%Y/%m/%d %H:%M') %>
+              </small>
+            </div>
+          </div>
+        </div>
       </div>
-        <% end %>
-      </div>
-    </div>
+    <% end %>
   </div>
 </div>
 
+
+<script>
+  const swiper = new Swiper('.swiper', {
+    loop: true,
+    autoplay: {
+      delay: 5000,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+</script>
