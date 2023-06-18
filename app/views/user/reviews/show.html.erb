@@ -36,7 +36,7 @@
   <% if @review.user_id == current_user.id %>
     <div class="edit-zone mt-3">
       <%= link_to "編集", edit_review_path(@review.id), class: 'btn btn-outline-info' %>
-      <%= link_to "削除", review_path(@review), method: :delate, class: 'btn btn-outline-danger' %>
+      <%= link_to "削除", review_path(@review), method: :delete, class: 'btn btn-outline-danger' %>
     </div>
   <% end %>
 

@@ -19,6 +19,9 @@
             <%= link_to 'レビュー一覧', reviews_path, class:'nav-link text-light btn btn-info ml-2' %>
           </li>
           <li>
+            <%= link_to 'レビュー新規投稿', new_review_path, class:'nav-link text-light btn btn-info ml-2' %>
+          </li>
+          <li>
             <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:'nav-link text-light btn btn-info ml-2' %>
           </li>
         <% else %>

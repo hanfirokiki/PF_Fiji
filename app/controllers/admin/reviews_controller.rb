@@ -6,5 +6,10 @@ class Admin::ReviewsController < ApplicationController
   end
 
   def destroy
+    def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+      redirect_to root_path, notice: "レビューが削除されました。"
+    end
   end
 end
