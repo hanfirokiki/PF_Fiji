@@ -1,22 +1,2 @@
 <h1>管理者側　不適切なレビューの管理</h1>
 
-<!-- app/views/reviews/show.html.erb -->
-<h1><%= @review.title %></h1>
-<p><%= @review.content %></p>
-
-<%= link_to 'レビュー削除', review_path(@review), method: :delete, data: { confirm: '本当に削除しますか？' } %>
-
-<% @review.comments.each do |comment| %>
-  <p><%= comment.content %></p>
-  <%= link_to 'コメント削除', comment_path(comment), method: :delete, data: { confirm: '本当に削除しますか？' } %>
-<% end %>
-
-
-<h1>レビュー詳細</h1>
-
-<p><%= @review.content %></p>
-<p><%= @review.rating %> / 5</p>
-
-<% if current_user.admin? %>
-  <%= link_to '不適切なレビューを削除', review_path(@review), method: :delete, data: { confirm: '本当に削除しますか？' } %>
-<% end %>
