@@ -36,12 +36,12 @@
         <div class="row">
           <div class="mx-auto">
             <% if admin_signed_in? %>
-     <%= link_to "管理者ページ", root_path, class: "nav-link" %>
-    <% else %>
-     <%= link_to "管理者ページ", admin_session_path, class: "nav-link" %>
-    <% end %> 
-            
-            
+             <%= link_to "管理者ページ", root_path, class: "nav-link" %>
+            <% else %>
+             <%= link_to "管理者ページ", admin_session_path, class: "nav-link" %>
+            <% end %>
+
+
             <p>© 2023 hanfirokiki</p>
           </div>
         </div>
@@ -52,4 +52,4 @@
 
 
 
-   
+

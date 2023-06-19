@@ -1,3 +1,30 @@
-<h1>アドミン側不適切なレビューを削除する</h1>
+<div class="container">
+  <div class="row justify-content-center mt-3">
+    <h1 class="border-bottom border-gray">管理者側ユーザー一覧・不適切なレビュー管理</h1>
+  </div>
 
 
+  <div class="row">
+    <h1>ユーザー一覧</h1>
+    <table class='table'>
+      <thead>
+        <tr>
+          <th>ユーザーID</th>
+          <th>ニックネーム</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= link_to admin_review_path(user.id) do %><%= user.nickname %><% end %></td>
+            
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @users %>
+  </div>
+</div>
