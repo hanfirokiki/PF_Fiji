@@ -1,78 +1,38 @@
-
-
-<div class="container-fluid">
-  <div class="row justify-content-center mt-3">
-    <h1 class="border-bottom border-gray">管理者側　不適切なレビューの管理</h1>
-  </div>
-
-
-  <div class="row offset-md-1">
-    <div class="col-8 mx-auto pb-4">
-      <h1><%= @user.nickname %>さんの会員詳細</h1>
-    </div>
-  </div>
+<div class="container">
+  <h2 class="page-title text-center">管理者側　不適切なレビューの管理</h2>
   <div class="row">
-    <div class="col-8 mx-auto">
-      <table class="table">
-        <tr>
-          <th>会員ID</th>
-          <td><%= @user.id %></td>
-        </tr>
-        <tr>
-          <th>ニックネーム</th>
-          <td><%= @user.nickname %><%= @user.nickname %></td>
-        </tr>
-        <tr>
-          <th>メールアドレス</th>
-          <td><%= @user.email %></td>
-        </tr>
-         </div>
-
-        <div class="col-12 col-md-6 col-lg-4 mb-3">
-        <div class="card">
-          <div class="card-header">
-            <%#= image_tag review.user.get_profile_image(100, 100), class: 'profile-circle-image rounded-circle mr-3' %>
-            <%#= review.user.nickname %>
-
-           <% @reviews.each do |review| %>
-          <%= link_to review_path(review.id) do %>
-            <% end %>
-         <p>タイトル：<%= review.title %></p>
-         <p>説明：<%= review.introduction %></p>
-         <p><%= link_to "削除する", review_path(review.id),  class: "btn btn-danger", method: :delete %></p>
-           </div>
-         <% end %>
-
+    <div class="col-6 d-grid gap-2 mx-auto">
+      <div class="row">
+        <table class='table'>
+          <thead>
+            <tr>
+              <th>会員ID</th>
+              <td><%= @user.id %></td>
+            </tr>
+            <tr>
+              <th>ニックネーム</th>
+              <td><%= @user.nickname %></td>
+            </tr>
+            <tr>
+              <th>メールアドレス</th>
+              <td><%= @user.email %></td>
+            </tr>
+            <tr>
+              <th>レビュー</th>
+            </tr>
+              <tbody>
+                <% @reviews.each do |review| %>
+                <%= link_to review_path(review.id) do %>
+            <tr>
+							<td>タイトル：<%= review.title %></td>
+              <td>説明：<%= review.introduction %></td>
+              <td><%= link_to "削除する", admin_review_path(review.id),  class: "btn btn-danger", method: :delete %></td>
+            </tr>
+                <% end %>
+              <% end %>
+              </tbody>
+			 </table>
+		  </div>
+	  </div>
+  </div>
  </div>
-  </div>
-
-   <div class="col-12 col-md-6 col-lg-4 mb-3">
-        <div class="card">
-          <div class="card-header">
-            <%#= image_tag review.user.get_profile_image(100, 100), class: 'profile-circle-image rounded-circle mr-3' %>
-            <%#= review.user.nickname %>
-
-         <!--  <%# @comments.each do |comment| %>-->
-         <!-- <%#= link_to review_comment_path(comment.id) do %>-->
-         <!--   <%# end %>-->
-         <!--<p>タイトル：<%#= review.title %></p>-->
-         <!--<p>説明：<%#= review.introduction %></p>-->
-         <!--<p><%#= link_to "削除する", review_path(review.id),  class: "btn btn-danger", method: :delete %></p>-->
-         <!--  </div>-->
-         <!--<%# end %>-->
-
- </div>
-  </div>
-
-          </td>
-        </tr>
-      </table>
-    </div>
-    <div class="col-10 d-grid gap-2 d-md-flex justify-content-md-end">
-      <div>
-        <%#= link_to '編集する', edit_admin_user_path(@user), class:"btn btn-sm btn btn-outline-success mr-2" %>
-      </div>
-
-    </div>
-  </div>
-</div>

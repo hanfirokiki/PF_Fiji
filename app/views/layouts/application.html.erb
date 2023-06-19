@@ -30,6 +30,9 @@
     <% end %>
     <main>
   </header>
+  <% if notice.present? %>
+    <p><%= notice %></p>
+  <% end %>
     <%= yield %>
     <footer>
       <div class="container mt-5">
