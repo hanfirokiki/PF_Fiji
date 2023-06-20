@@ -20,10 +20,10 @@
     </div>
     <div class="col-12 col-lg-9">
 
-      <h5 class="my-3"><%= "レビュー一覧 （全#{@reviews.count}件）" %></h5>
+      <h5 class="my-3"><%= "#{@category.category_name}に関するレビュー一覧 （全#{@category.reviews.count}件）" %></h5>
 
       <div class="row">
-        <% @reviews.each do |review| %>
+        <% @category.reviews.each do |review| %>
           <div class="col-12 col-md-6 col-lg-4 mb-3">
             <div class="card">
               <div class="card-header">
@@ -95,7 +95,7 @@
 
 
 <script>
-  var swiper = new Swiper('.swiper', {
+  const swiper = new Swiper('.swiper', {
     loop: true,
     autoplay: {
       delay: 5000,

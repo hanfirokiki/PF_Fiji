@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="page-title text-center">レビュー一覧</h2>
+  <h2 class="page-title text-center">検索</h2>
 
   <div class="row">
     <div class="col-12 col-lg-3">
@@ -19,8 +19,6 @@
       </div>
     </div>
     <div class="col-12 col-lg-9">
-
-      <h5 class="my-3"><%= "レビュー一覧 （全#{@reviews.count}件）" %></h5>
 
       <div class="row">
         <% @reviews.each do |review| %>
@@ -90,12 +88,10 @@
 
     </div>
   </div>
-
 </div>
 
-
 <script>
-  var swiper = new Swiper('.swiper', {
+  const swiper = new Swiper('.swiper', {
     loop: true,
     autoplay: {
       delay: 5000,

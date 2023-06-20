@@ -6,6 +6,7 @@ class User::ReviewsController < ApplicationController
 
   def index
     @reviews = Review.all.order(created_at: :desc)
+    @categories = Category.all.order(created_at: :desc)
    # @images = Review_images.all
   end
 

@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
   get 'homes/about' => 'homes#about'
+
+  get "searches" => "searches#searches"
+
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
@@ -31,6 +34,7 @@ Rails.application.routes.draw do
 
     resources :users, only: [:edit, :update]
     get '/users/mypage/:id' => 'users#show', as: "mypage"
+    resources :categories, only: [:show]
     resources :reviews do
       resource :likes, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
