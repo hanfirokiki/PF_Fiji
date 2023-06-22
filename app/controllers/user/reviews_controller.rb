@@ -5,11 +5,11 @@ class User::ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = Review.all.order(created_at: :desc)
+    @reviews = Review.all.order(created_at: :desc).page(params[:page])
     @categories = Category.all.order(created_at: :desc)
-   # @images = Review_images.all
-  end
+    #@reviews = Review.all.includes(:user).order(created_at: :desc).page(params[:page])
 
+  end
   def edit
     @review = Review.find(params[:id])
   end
@@ -47,6 +47,6 @@ class User::ReviewsController < ApplicationController
    private
 
   def review_params
-    params.require(:review).permit(:title, :introduction, :category_id, images: [])
+    params.require(:review).permit(:title, :introduction, :category_id, :star, images: [])
   end
 end
