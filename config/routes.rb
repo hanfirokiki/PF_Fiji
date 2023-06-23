@@ -40,10 +40,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
 
-    # resources :foods, only: [:show, :edit, :new, :create] do
-    #   get 'search' => 'foods#search', as: 'search'
-    #   delete 'multi_remove' => 'foods#multi_remove', as: 'm_remove'
-    # end
+    
  end
 
 
