@@ -6,9 +6,10 @@ class Admin::ReviewsController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    @reviews = @user.reviews.page(params[:page])
+    # @user = User.find(params[:id])
+    # @reviews = @user.reviews.page(params[:page])
     #@commnents = @review.comments
+    @review = Review.find(params[:id])
   end
 
   # def update
@@ -21,8 +22,9 @@ class Admin::ReviewsController < ApplicationController
   # end
   def destroy
     @reviews = Review.find(params[:id])
+    @user = @reviews.user
     @reviews.destroy
-    redirect_to request.referer
+    redirect_to admin_user_path(@user.id)
   end
 
   def order_index

@@ -18,7 +18,7 @@
         </div>
       </div>
      </div>
-      
+
     <div class="col-12 col-lg-9">
 
       <h5 class="my-3"><%= "レビュー一覧 （全#{@reviews.count}件）" %></h5>
@@ -56,8 +56,12 @@
                 <%= review.introduction.truncate(10) %>
               </div>
               <div class="card-footer">
-
-                <div class="like_btn">
+                <div class="category text-right">
+                  <small>
+                    カテゴリー : <%= review.category.category_name %>
+                  </small>
+                 
+                <div class="like_btn-left">
                   <% if user_signed_in? %>
                   <% if review.liked?(current_user) %>
                       <%= link_to review_likes_path(review), method: :delete, class: "like_btn" do %>
@@ -73,18 +77,14 @@
                   <% end %>
                 </div>
 
-                <div class="category text-right">
-                  <small>
-                    <%= review.category.category_name %>
-                  </small>
-                </div>
-
-                <!--<div class="comment text-left">-->
-                <!--  <small>-->
-                    <%#= review.comment %>
-                <!--  </small>-->
                 <!--</div>-->
-
+                <div class="comment left">
+                　<small>
+                    <%= link_to "#{review.comments.count}コメント", review_path(review, anchor: 'comments') %>
+                　</small>
+                </div>
+              
+                </div>
                 <div class="datetime text-right">
                   <small class="text-black-50">
                     <%= review.created_at.in_time_zone('Tokyo').strftime('%Y/%m/%d %H:%M') %>

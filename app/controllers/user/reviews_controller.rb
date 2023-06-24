@@ -17,6 +17,7 @@ class User::ReviewsController < ApplicationController
   def show
     @review = Review.find(params[:id])
     @comment = Comment.new
+    # @reviews = Review.all.order(created_at: :desc).page(params[:page])
   end
 
   def create

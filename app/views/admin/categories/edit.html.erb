@@ -1,17 +1,7 @@
-<div class="container-fluid">
-  <div class="row justify-content-center mt-3">
-    <h1 class="border-bottom border-gray">カテゴリー編集画面</h1>
-  </div>
-
-
-<%= render 'admin/shared/error_messages', resource: @category %>
+<div class="container">
+  <h2 class="page-title">カテゴリー編集画面</h2>
   <div class="row">
-    <div class="col-6 mx-auto pb-4">
-      <h3>カテゴリー編集</h3>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-6 mx-auto">
+    <div class="col-6 mx-left">
       <%= form_with model: @category, url: admin_category_path(@category),method: :patch do |f| %>
         <td><%= f.label :"カテゴリー名", class: "mr-3" %></td>
         <td><%= f.text_field :category_name, class: "mr-5" %></td>

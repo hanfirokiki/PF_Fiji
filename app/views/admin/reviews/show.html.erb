@@ -1,39 +1,47 @@
 <div class="container">
-  <h2 class="page-title text-center">管理者側　不適切なレビューの管理</h2>
+  <h2 class="page-title">管理者側 不適切なレビュー及びコメントの管理</h2>
   <div class="row">
-    <div class="col-6 d-grid gap-2 mx-auto">
-      <div class="row">
+    <div class="col-6 left">
+      <h2>レビュー</h2>
+      <table class='table'>
+        <thead>
+          <tr>
+            <th>タイトル</th>
+            <th>説明</th>
+            <th></th>
+            </tr>
+        </thead>
+          <tbody>
+            <tr>
+              <td>
+                <%#= link_to admin_review_path(@review.id) do %>
+                  <%= @review.title %>
+                <%# end %>
+                </td>
+              <td><%= @review.introduction %></td>
+              <td><%= link_to "削除", admin_review_path(@review.id),  class: "btn btn-outline-danger", method: :delete %></td>
+            </tr>
+          </tbody>
+        </table>
+
+              <!--コメント削除ここから-->
         <table class='table'>
           <thead>
             <tr>
-              <th>会員ID</th>
-              <td><%= @user.id %></td>
+              <th>コメント</th>
             </tr>
+          </thead>
+            <tbody>
+                <% @review.comments.each do |comment| %>
+                <%#= link_to review_comment_path(comment.id) do %>
             <tr>
-              <th>ニックネーム</th>
-              <td><%= @user.nickname %></td>
+							<td>コメント：<%= comment.comment %></td>
+              <td><%= link_to "削除する", admin_review_comment_path(comment.id),  class: "btn btn-outline-danger", method: :delete %></td>
             </tr>
-            <tr>
-              <th>メールアドレス</th>
-              <td><%= @user.email %></td>
-            </tr>
-            <tr>
-              <th>レビュー</th>
-            </tr>
-              <tbody>
-                <% @reviews.each do |review| %>
-                <%= link_to review_path(review.id) do %>
-            <tr>
-							<td>タイトル：<%= review.title %></td>
-              <td>説明：<%= review.introduction %></td>
-              <td><%= link_to "削除する", admin_review_path(review.id),  class: "btn btn-danger", method: :delete %></td>
-            </tr>
-                <% end %>
+                <%# end %>
               <% end %>
-              
-              </tbody>
-			 </table>
-		  </div>
-	  </div>
-  </div>
+           </tbody>
+        </table>  
+		 </div>
+	 </div>
  </div>
