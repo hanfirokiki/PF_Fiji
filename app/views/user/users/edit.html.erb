@@ -1,28 +1,21 @@
-<div class="container p-2">
+<div class="container">
+  <h2 class="page-title text-center">会員登録情報編集</h2>
   <div class="row">
-    <div class="col-6 d-grid gap-2 mx-auto">
-      <h1 class="border-bottom border-gray">会員登録情報編集</h1>
-
-        <div class="row">
-          <div class="col text-left mt-5">
-           　<%= form_with model: @user, url: user_path(@user) do |f| %>
-            <label for="inputName">ニックネーム</label>
-            <%= f.text_field :nickname, autofocus: true, id:"inputName", placeholder:"ニックネーム"%><br />
-        　　<label for="inputImage">ProfileImage</label>
-        　　<%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %><br />
-        　　<label for="inputEmail">Email</label>
-        　　<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-　　       
-        　　<%= render "user/shared/error_messages", resource: @user %>
-
-　         <div class="actions mt-2">
-　           <%= f.submit "変更を保存", class: 'btn btn-outline-info' %>
-          　 <%= link_to "退会の手続き", withdraw_confirm_path, class: 'btn btn-outline-danger' %>
-          　 <% end %>
-　         </div>
-          </div>
-         </div>
-    </div>
+    <div class="col text-center mt-5">
+      <%= form_with model: @user, url: user_path(@user) do |f| %>
+      <label for="inputName">ニックネーム</label>
+      <%= f.text_field :nickname, autofocus: true, id:"inputName", placeholder:"ニックネーム"%><br />
+      <label for="inputImage">ProfileImage</label>
+      <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %><br />
+      <label for="inputEmail">Email</label>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+　　  <%= render "user/shared/error_messages", resource: @user %>
+   <div class="actions mt-2">
+     <%= f.submit "変更を保存", class: 'btn btn-outline-info' %>
+     <%= link_to "退会の手続き", withdraw_confirm_path, class: 'btn btn-outline-danger' %>
+     <% end %>
+　 </div>
+  </div>
   </div>
 </div>
-
+  

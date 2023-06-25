@@ -6,6 +6,10 @@ class Review < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  validates :title, presence: true
+  validates :introduction, presence: true
+  validates :images, presence: true
+
   def get_images
     unless images.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -18,9 +22,5 @@ class Review < ApplicationRecord
     likes.where(user_id: user.id).exists?
   end
 
-  # validates :nickname, presence: true
-  validates :title, presence: true
-  validates :introduction, presence: true
-  validates :images, presence: true
 
 end

@@ -47,6 +47,7 @@
                 <!-- If we need navigation buttons -->
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>
+
               </div>
 
               <div class="card-body">
@@ -60,7 +61,7 @@
                   <small>
                     カテゴリー : <%= review.category.category_name %>
                   </small>
-                 
+
                 <div class="like_btn-left">
                   <% if user_signed_in? %>
                   <% if review.liked?(current_user) %>
@@ -83,7 +84,7 @@
                     <%= link_to "#{review.comments.count}コメント", review_path(review, anchor: 'comments') %>
                 　</small>
                 </div>
-              
+
                 </div>
                 <div class="datetime text-right">
                   <small class="text-black-50">
@@ -91,6 +92,23 @@
                   </small>
                 </div>
               </div>
+            <!--5段階評価-->
+           <div id="star-rate<%= review.id%>"></div>
+             <script>
+
+                let opt_<%= review.id %> = {
+                  starOn: "<%= asset_path('star-on.png') %>",
+                  starOff: "<%= asset_path('star-off.png') %>",
+                  starHalf: "<%= asset_path('star-half.png') %>",
+                  scoreName: 'review[star]',
+                  readOnly: true,
+                  score: <%= review.star || 0 %>
+                };
+                raty(document.querySelector('#star-rate<%= review.id %>'),opt_<%= review.id %>);
+             </script>
+
+            <!--5段階評価-->
+
             </div>
           </div>
         <% end %>

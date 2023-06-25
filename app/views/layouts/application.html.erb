@@ -37,13 +37,13 @@
               <%= link_to "旅行に関するお問い合わせはこちら", "https://www.tohotravel.com", target: "_blank", rel: "noopener noreferrer" %>
             </div>
           </div>
-           
+
           <div class="col-4">
             <div class="card-body">
               <%= link_to "ダイビングに関するお問い合わせはこちら", "https://www.aquatrekdiving.com", target: "_blank", rel: "noopener noreferrer" %>
             </div>
           </div>
-          
+
         　<div class="col">
           　　<%= form_tag(searches_path, method: :get) do %>
             <div class="input-group mb-3">
@@ -55,14 +55,14 @@
               </div>
             </div>
           <% end %>
-    
+
           </div>
         </div>
       </div>
-      
+
     </header>
   <% if notice.present? %>
-    <p><%= notice %></p>
+    <div class= "text-center" ><%= notice %></div>
   <% end %>
     <%= yield %>
     <footer>

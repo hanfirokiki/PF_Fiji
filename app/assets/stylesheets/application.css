@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+.equal_table{
+  table-layout: fixed;
+  width: 300px;
+}

@@ -1,5 +1,16 @@
 <div class="container">
   <h2 class="page-title text-center">レビューの編集</h2>
+
+<!--  <%# if @review.errors.any? %>-->
+<!--  <%#= @review.errors.count %>件のエラーが発生しました-->
+<!--  <ul>-->
+<!--    <%# @review.errors.full_messages.each do |message| %>-->
+<!--      <li><%#= message %></li>-->
+<!--    <%# end %>-->
+<!--  </ul>-->
+<!--<%# end %>-->
+
+
     <div class="row">
     <div class="col-6 d-grid gap-2 mx-auto">
       <div class="row">
@@ -10,4 +21,16 @@
   　　　</div>
 　　</div>
 　　</div>
+　　
+　　<style>
+　　
+  /* フラッシュメッセージのスタイル */
+  .flash-messages {
+    text-align: center; /* メッセージを中央に配置 */
+    margin-bottom: 20px; /* 下部のマージンを設定（任意の値） */
+  }
+</style>
+　　
+　　
 </div>
+

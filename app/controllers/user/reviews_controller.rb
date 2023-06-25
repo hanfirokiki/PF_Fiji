@@ -17,6 +17,8 @@ class User::ReviewsController < ApplicationController
   def show
     @review = Review.find(params[:id])
     @comment = Comment.new
+
+     #=>show.html.erb
     # @reviews = Review.all.order(created_at: :desc).page(params[:page])
   end
 
@@ -24,6 +26,7 @@ class User::ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     if @review.save
+      flash[:notice] = "投稿が成功しました"
       redirect_to review_path(@review)
     else
       render :new
@@ -31,9 +34,10 @@ class User::ReviewsController < ApplicationController
   end
 
   def update
-    review = Review.find(params[:id])
-    if review.update(review_params)
-      redirect_to review_path(review)
+    @review = Review.find(params[:id])
+    if @review.update(review_params)
+      flash[:notice] = "編集が成功しました"
+      redirect_to review_path(@review)
     else
       render :edit
     end
