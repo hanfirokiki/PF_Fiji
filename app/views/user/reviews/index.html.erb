@@ -102,7 +102,7 @@
                   starHalf: "<%= asset_path('star-half.png') %>",
                   scoreName: 'review[star]',
                   readOnly: true,
-                  score: <%= review.star || 0 %>
+                  score: <%= review.star.nil? || review.star.empty? ? 0 : review.star %>
                 };
                 raty(document.querySelector('#star-rate<%= review.id %>'),opt_<%= review.id %>);
              </script>
