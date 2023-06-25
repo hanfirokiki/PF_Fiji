@@ -15,6 +15,7 @@ class User::UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
+      flash[:notice] = "変更が成功しました。"
       redirect_to mypage_path
     else
       render 'edit'
@@ -33,7 +34,7 @@ class User::UsersController < ApplicationController
     @user.update(is_deleted: true)
     sign_out(@user)
     reset_session
-    flash[:alert] = "退会処理を実行いたしました"
+    flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
   end
 
