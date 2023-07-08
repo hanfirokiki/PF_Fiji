@@ -1,13 +1,5 @@
 <div class="container">
   <h2 class="page-title text-center">レビュー新規投稿画面</h2>
-　　<% if @review.errors.any? %>
-  <%= @review.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @review.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
 
   <div class="row">
     <div class="col-8">
