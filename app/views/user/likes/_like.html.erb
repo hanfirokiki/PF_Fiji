@@ -1,0 +1,13 @@
+<% if user_signed_in? %>
+  <% if review.liked?(current_user) %>
+    <%= link_to review_likes_path(review), id: "like_buttons_#{review.id}", method: :delete, remote: true, class: "like_btn" do %>
+    ♥<%= review.likes.count %> いいね
+  <% end %>
+<% else %>
+    <%= link_to review_likes_path(review), id: "like_buttons_#{review.id}", method: :post, remote: true, class: "like_btn" do %>
+    　♡<%= review.likes.count %> いいね
+  　<% end %>
+　<% end %>
+<% else %>
+   ♥<%= review.likes.count %> いいね
+<% end %>

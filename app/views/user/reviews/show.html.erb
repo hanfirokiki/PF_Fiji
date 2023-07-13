@@ -44,15 +44,8 @@
   </script>
 
   <div class="like_btn mt-3">
-    <% if @review.liked?(current_user) %>
-      <%= link_to review_likes_path(@review), method: :delete, class: "like_btn" do %>
-        ♥<%= @review.likes.count %> いいね
-      <% end %>
-    <% else %>
-      <%= link_to review_likes_path(@review), method: :post, class: "like_btn" do %>
-        ♡<%= @review.likes.count %> いいね
-      <% end %>
-    <% end %>
+    
+    <%= render "user/likes/like", review: @review %>
   </div>
 
   <% if @review.user_id == current_user.id %>
