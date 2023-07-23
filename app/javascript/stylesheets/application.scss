@@ -48,3 +48,20 @@
     z-index: 9999;
     opacity: 0;
 }
+
+@media screen and (min-width: 426px) {
+  .sp {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .pc {
+    display: none;
+  }
+  header {
+    width: 100%;
+  }
+
+
+}
